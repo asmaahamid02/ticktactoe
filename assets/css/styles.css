@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -25,19 +25,53 @@ h1 {
 }
 
 .playground {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: repeat(3, 33%);
+  /* flex-wrap: wrap; */
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: #ca1010;
-  padding: 20px;
+  background-color: #dccccc;
+  /* padding: 10px; */
 }
 
 .playground > .checkbox-card {
-  width: 33.33%;
-  height: 33.33%;
-  padding: 12%;
+  min-width: 150px;
+  min-height: 150px;
+  cursor: pointer;
   background-color: #fff;
-  border: 1px solid;
+  border: 1px solid #333;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.red {
+  background-image: url('../images/red.png');
+}
+
+.yellow {
+  background-image: url('../images/yellow.png');
+}
+
+.reset {
+  background-color: #750101;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.reset:hover {
+  color: #750101;
+  background-color: transparent;
+  border: 2px solid #750101;
+}
+
+.hide {
+  display: none;
 }
