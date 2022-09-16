@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
           ? '<span class="red-player">Red</span> Player Won'
           : '<span class="yellow-player">Yellow</span> Player Won'
 
-      isActive = false
-
       controls.classList.remove('hide')
+      isActive = false
     }
 
     if (!boxes.includes('')) {
       controls.innerHTML = 'Tie'
+      controls.classList.remove('hide')
     }
   }
 

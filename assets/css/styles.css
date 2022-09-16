@@ -8,8 +8,9 @@
 
 body {
   height: 100vh;
-  background-color: #eee;
+  background-color: #333;
   display: flex;
+  color: #fff;
 }
 
 .container {
@@ -62,16 +63,30 @@ h1 {
   color: #fff;
   border: none;
   font-size: 1.2rem;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
 .reset:hover {
-  color: #750101;
-  background-color: transparent;
-  border: 2px solid #750101;
+  background-color: rgb(117, 1, 1, 0.7);
 }
 
 .hide {
   display: none;
+}
+
+.turn,
+.controls {
+  font-size: 1.2rem;
+  padding: 20px 12px;
+}
+
+.red-player {
+  color: #eb0909;
+  font-weight: bold;
+}
+
+.yellow-player {
+  color: rgb(231, 231, 7);
+  font-weight: bold;
 }
