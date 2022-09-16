@@ -1,0 +1,92 @@
+/*CSS Reset*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #333;
+  display: flex;
+  color: #fff;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 20px 12px;
+}
+
+.playground {
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: repeat(3, 33%);
+  /* flex-wrap: wrap; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #dccccc;
+  /* padding: 10px; */
+}
+
+.playground > .checkbox-card {
+  min-width: 150px;
+  min-height: 150px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #333;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.red {
+  background-image: url('../images/red.png');
+}
+
+.yellow {
+  background-image: url('../images/yellow.png');
+}
+
+.reset {
+  background-color: #750101;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.reset:hover {
+  background-color: rgb(117, 1, 1, 0.7);
+}
+
+.hide {
+  display: none;
+}
+
+.turn,
+.controls {
+  font-size: 1.2rem;
+  padding: 20px 12px;
+}
+
+.red-player {
+  color: #eb0909;
+  font-weight: bold;
+}
+
+.yellow-player {
+  color: rgb(231, 231, 7);
+  font-weight: bold;
+}
