@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cards = Array.from(document.querySelectorAll('.checkbox-card'))
   const turn = document.querySelector('.turn')
+  const display_player = document.querySelector('.display-player')
   const controls = document.querySelector('.controls')
-  const reset_button = document.querySelector('.controls')
+  const reset_button = document.querySelector('.reset')
 
   let boxes = ['', '', '', '', '', '', '', '', '']
   let current_player = 'red'
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let won = false
   const play = (card, index) => {
     const span_hidden_text = card.childNodes[0]
-    if (span_hidden_text === 'red' || span_hidden_text === 'yellow') {
+    if (span_hidden_text === null || !isActive) {
       return
     } else {
       card.classList.add(current_player)
@@ -55,15 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
           current_player === 'red'
             ? '<span class="red-player">Red</span> Player Won'
             : '<span class="yellow-player">Yellow</span> Player Won'
+
+        isActive = false
+
+        controls.classList.remove('hide')
       }
 
       if (!boxes.includes('')) {
         controls.innerHTML = 'Tie'
       }
 
+      display_player.classList.remove(`${current_player}-player`)
+      current_player = current_player === 'red' ? 'yellow' : 'red'
+      display_player.textContent = current_player
+      display_player.classList.add(`${current_player}-player`)
       console.log(won, current_player, controls.textContent)
     }
-    console.log(span_hidden_text === null)
   }
 
   cards.forEach((card, index) =>
