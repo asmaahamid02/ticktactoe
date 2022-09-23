@@ -5,8 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const controls = document.querySelector('.controls')
   const reset_button = document.querySelector('.reset')
 
-  let boxes = ['', '', '', '', '', '', '', '', '']
-  let current_player = 'red'
+  // let boxes = ['', '', '', '', '', '', '', '', '']
+
+  let board = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', ''],
+  ]
+  const computer = 'yellow'
+  const human = 'red'
+
+  let current_player = human
   let isActive = true
   let card_ids = []
 
@@ -25,6 +34,89 @@ document.addEventListener('DOMContentLoaded', () => {
     [2, 4, 6],
   ]
 
+  const equals = (a, b, c) => {
+    return a == b && b == c && a != ''
+  }
+
+  const checkWinner = () => {
+    let winner = null
+
+    //horizontal
+    for (let i = 0; i < 3; i++) {
+      if (equals(board[i][0], board[i][1], board[i][2])) {
+        winner = board[i][0]
+      }
+    }
+    //vertical
+    for (let i = 0; i < 3; i++) {
+      if (equals(board[0][i], board[1][i], board[2][i])) {
+        winner = board[0][i]
+      }
+    }
+    //diagonal
+    if (equals(board[0][0], board[1][1], board[2][2])) {
+      winner = board[0][0]
+    }
+
+    if (equals(board[2][0], board[1][1], board[0][2])) {
+      winner = board[2][0]
+    }
+
+    let emptySpots = 0
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        emptySpots++
+      }
+    }
+
+    // if (winner == null && emptySpots == 0) {
+    //   return 'tie'
+    // } else {
+    return winner
+    // }
+  }
+
+  let scores = {
+    red: 1,
+    yellow: -1,
+    tie: 0,
+  }
+  const minimax = (board, depth, isMaximized) => {
+    //computer : 1
+    //human: -1
+    //tie: tie
+    let result = checkWinner()
+
+    if (result !== null) {
+      //if there is a winner return its score
+      let score = scores[result]
+      return true
+    }
+
+    if (isMaximized) {
+    }
+  }
+  const pickMove = () => {
+    let move
+    let bestScore = -10
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] == '') {
+          board[i][j] = computer
+          let score = minimax(board, 0, false)
+          board[i][j] = ''
+          if (score > bestScore) {
+            bestScore = score
+            move = { i, j }
+          }
+        }
+      }
+    }
+
+    board[move.i][move.j] = computer
+    current_player = human
+  }
+
   const isClickValid = (card) => {
     const span_hidden_text = card.childNodes[0]
     if (
@@ -37,7 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return true
   }
 
-  const checkWinner = () => {
+  const checkWinner2 = () => {
+    //Computer winner 1
+    //human winner -1
+    //tie 0
+    //game not ended null
     let won = false
     for (let i = 0; i < indices_winning_conditions.length; i++) {
       //get the winning case based on index
@@ -100,4 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
   cards.forEach((card, index) =>
     card.addEventListener('click', () => play(card, index))
   )
+
+  reset_button.addEventListener('click', () => {
+    window.location.reload()
+  })
 })
